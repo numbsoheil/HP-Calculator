@@ -1,3 +1,18 @@
+# HP Calculator — 10bII+ Modern Web Edition
+
+> **Status: early adaptation prototype.** The new mobile-first 10bII+-inspired interface is now the main landing page; advanced functions remain under development. This repository is a fork of [mscottsewell/HP12c](https://github.com/mscottsewell/HP12c), not the official HP or Anishu software.
+
+- **Modern calculator:** [modern.html](modern.html) (default after opening [index.html](index.html))
+- **Original HP 12C simulator:** [legacy.html](legacy.html)
+- **Run with Docker:** `docker compose up --build -d`, then open **http://localhost:8080**
+- **Static site (if GitHub Pages is enabled):** https://numbsoheil.github.io/HP-Calculator/
+- **Docker details:** [DOCKER.md](DOCKER.md)
+- **Feature roadmap / caveats:** [MODERN_ADAPTATION.md](MODERN_ADAPTATION.md)
+
+The original upstream README is preserved below.
+
+---
+
 # HP12c Financial Calculator Simulator for the Classroom
 
 A web-based educational simulator of the HP12c Financial Calculator with an interactive step-by-step recording system designed for demonstrating the use of calculator on-screen in a classroom. 

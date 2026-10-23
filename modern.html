@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#202020">
+  <meta name="description" content="Modern financial calculator inspired by the 10bII+ keyboard">
+  <title>10bII+ Modern | Financial Calculator</title>
+  <link rel="icon" type="image/svg+xml" href="Assets/10bii-icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="modern.css">
+  <script defer src="calculator-core.js"></script>
+  <script defer src="modern.js"></script>
+</head>
+<body>
+  <main class="calculator" aria-label="Financial calculator">
+    <header class="display-header">
+      <output id="modern-display" class="result" aria-live="polite">0.00</output>
+      <div class="identity"><strong>10bII<span>+</span></strong><small>Modern</small><em>Web edition</em></div>
+    </header>
+    <section class="data-panel" aria-label="Data and input registers">
+      <h1>DATA/INPUT</h1>
+      <dl>
+        <div><dt>Key buffer:</dt><dd id="modern-buffer">—</dd></div>
+        <div><dt>X:</dt><dd id="modern-x">0</dd></div>
+        <div><dt>INPUT:</dt><dd id="modern-input">—</dd></div>
+        <div><dt>Y:</dt><dd id="modern-y">—</dd></div>
+      </dl>
+      <p id="modern-status" role="status">Ready · Algebraic entry</p>
+    </section>
+    <div class="reg-summary"><span>Payments/year: <b id="modern-pyr">12</b></span><span>Orange and blue shifts</span></div>
+    <section id="modern-keyboard" class="keyboard" aria-label="Calculator keys">
+      <button class="key" data-key="n"><span class="above">AccInt</span><strong>N</strong><small>xP/YR</small></button>
+      <button class="key" data-key="iy"><span class="above">YTM</span><strong>I/YR</strong><small>NOM%</small></button>
+      <button class="key" data-key="pv"><span class="above">PRICE</span><strong>PV</strong><small>EFF%</small></button>
+      <button class="key" data-key="pmt"><span class="above">CPN%</span><strong>PMT</strong><small>P/YR</small></button>
+      <button class="key" data-key="fv"><span class="above">CALL</span><strong>FV</strong><small>AMORT</small></button>
+
+      <button class="key" data-key="input"><span class="above">D.MY/M.DY</span><strong>INPUT</strong><small>DATE</small></button>
+      <button class="key" data-key="mu"><span class="above">360/Act</span><strong>MU</strong><small>ΔDAYS</small></button>
+      <button class="key" data-key="cst"><span class="above">Semi/Ann</span><strong>CST</strong><small>IRR/YR</small></button>
+      <button class="key" data-key="prc"><span class="above">SetDate</span><strong>PRC</strong><small>NPV</small></button>
+      <button class="key" data-key="mar"><span class="above">MatDate</span><strong>MAR</strong><small>Beg/End</small></button>
+
+      <button class="key" data-key="k"><span class="above">UNITS</span><strong>K</strong><small>SWAP</small></button>
+      <button class="key" data-key="percent"><span class="above">SP</span><strong>%</strong><small>%CHG</small></button>
+      <button class="key" data-key="cfj"><span class="above">VC</span><strong>CFj</strong><small>Nj</small></button>
+      <button class="key" data-key="sum"><span class="above">FC</span><strong>Σ+</strong><small>Σ-</small></button>
+      <button class="key" data-key="back"><span class="above">PROFIT</span><strong>←</strong><small>RND</small></button>
+
+      <button class="key" data-key="sign"><span class="above">SL</span><strong>+/−</strong><small>E</small></button>
+      <button class="key" data-key="rcl"><span class="above">SOYD</span><strong>RCL</strong><small>STO</small></button>
+      <button class="key" data-key="tomem"><span class="above">DB</span><strong>→M</strong><small>C.STAT</small></button>
+      <button class="key" data-key="rm"><span class="above shift-label">HYP</span><strong>RM</strong><small>(</small></button>
+      <button class="key" data-key="mplus"><span class="above shift-label">INV</span><strong>M+</strong><small>)</small></button>
+
+      <button class="key shift shift-blue" data-layer="blue" aria-label="Blue shift"><strong>⇧</strong></button>
+      <button class="key" data-key="7"><span class="above">Σx²</span><strong>7</strong><small>x̄,ȳ</small></button>
+      <button class="key" data-key="8"><span class="above">Σy²</span><strong>8</strong><small>Sx,Sy</small></button>
+      <button class="key" data-key="9"><span class="above">Σxy</span><strong>9</strong><small>σx,σy</small></button>
+      <button class="key" data-key="divide"><span class="above">SIN</span><strong>÷</strong><small>1/x</small></button>
+
+      <button class="key shift shift-orange" data-layer="orange" aria-label="Orange shift"><strong>⇧</strong></button>
+      <button class="key" data-key="4"><span class="above">n</span><strong>4</strong><small>x̂,r</small></button>
+      <button class="key" data-key="5"><span class="above">Σx</span><strong>5</strong><small>ŷ,m</small></button>
+      <button class="key" data-key="6"><span class="above">Σy</span><strong>6</strong><small>x̄w,b</small></button>
+      <button class="key" data-key="multiply"><span class="above">COS</span><strong>×</strong><small>yˣ</small></button>
+
+      <button class="key" data-key="c"><span class="above">C MEM</span><strong>C</strong><small>C ALL</small></button>
+      <button class="key" data-key="1"><span class="above">REGR</span><strong>1</strong><small>eˣ</small></button>
+      <button class="key" data-key="2"><span class="above">df,t⇄p</span><strong>2</strong><small>LN</small></button>
+      <button class="key" data-key="3"><span class="above">Z⇄P</span><strong>3</strong><small>n!</small></button>
+      <button class="key" data-key="subtract"><span class="above">TAN</span><strong>−</strong><small>√x</small></button>
+
+      <button class="key" data-key="menu"><span class="above">Alg/Chain</span><strong>Menu</strong></button>
+      <button class="key" data-key="0"><span class="above">nPr</span><strong>0</strong><small>π</small></button>
+      <button class="key" data-key="decimal"><span class="above">nCr</span><strong>.</strong><small>, / :</small></button>
+      <button class="key" data-key="equals"><span class="above">RAND</span><strong>=</strong><small>DISP</small></button>
+      <button class="key" data-key="add"><span class="above">Rad/Deg</span><strong>+</strong><small>x²</small></button>
+    </section>
+    <footer><span>Prototype · Financial functions under validation</span><a href="./legacy.html">Original HP12c</a></footer>
+  </main>
+  <script>
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.warn));
+  </script>
+</body>
+</html>

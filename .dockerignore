@@ -1,0 +1,9 @@
+node_modules
+.git
+.github
+.claude
+*.md
+*.ps1
+.DS_Store
+coverage
+npm-debug.log

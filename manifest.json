@@ -1,22 +1,23 @@
 {
-  "name": "HP 12C Financial Calculator",
-  "short_name": "HP 12C",
-  "description": "A fully functional HP 12C financial calculator simulator",
-  "start_url": "./",
+  "name": "10bII+ Modern Web Calculator",
+  "short_name": "10bII+ Modern",
+  "description": "An independent financial calculator web adaptation inspired by the 10bII+ layout",
+  "start_url": "./modern.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#004262",
-  "theme_color": "#004262",
+  "background_color": "#202020",
+  "theme_color": "#202020",
   "orientation": "any",
   "icons": [
     {
-      "src": "Assets/college-logo.svg",
+      "src": "Assets/10bii-icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
       "src": "Assets/icon-192.png",
-      "start_url": "/HP12c/",
+      "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
@@ -27,6 +28,9 @@
       "purpose": "any"
     }
   ],
-  "categories": ["finance", "productivity", "utilities"],
-  "screenshots": []
+  "categories": [
+    "finance",
+    "productivity",
+    "utilities"
+  ]
 }

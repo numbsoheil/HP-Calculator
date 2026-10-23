@@ -1,62 +1,49 @@
-const CACHE_NAME = 'hp12c-calculator-v6';
-const urlsToCache = [
+const CACHE_NAME = 'hp-calculator-modern-v1';
+const PRECACHE = [
   './',
   './index.html',
-  './styles.css',
-  './calculator.js',
+  './modern.html',
+  './modern.css',
+  './modern.js',
   './calculator-core.js',
+  './manifest.json',
+  './Assets/10bii-icon.svg',
+  './legacy.html',
+  './calculator.js',
+  './styles.css',
   './help.js',
   './faq-data.json',
-  './Assets/AmyCalc_HP_12c_Background.png',
-  './Assets/college-logo.svg'
+  './Assets/AmyCalc_HP_12c_Background.png'
 ];
 
-// Install event - cache resources with resilient error handling
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        console.log('Opened cache');
-        // Cache each URL individually to avoid failing entire cache on one 404
-        return Promise.all(
-          urlsToCache.map(url => 
-            cache.add(url).catch(err => {
-              console.warn(`Failed to cache ${url}:`, err);
-              return Promise.resolve(); // Continue even if one fails
-            })
-          )
-        );
-      })
+    caches.open(CACHE_NAME).then(async cache => {
+      await Promise.all(PRECACHE.map(async url => {
+        try { await cache.add(url); }
+        catch (error) { console.warn('Offline cache skipped:', url, error); }
+      }));
+    }).then(() => self.skipWaiting())
   );
 });
 
-// Fetch event - serve from cache when available
-self.addEventListener('fetch', (event) => {
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+    )).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', event => {
+  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
+    fetch(event.request).then(response => {
+      if (response.ok) {
+        const copy = response.clone();
+        event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy)));
       }
-    )
-  );
-});
-
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME];
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+      return response;
+    }).catch(() => caches.match(event.request))
   );
 });

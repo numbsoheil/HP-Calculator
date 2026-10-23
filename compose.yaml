@@ -1,0 +1,15 @@
+services:
+  hp-calculator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hp-calculator:local
+    container_name: hp-calculator
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${PORT:-8080}:8080"
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "/dev/null", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
