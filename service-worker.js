@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hp-calculator-modern-v2-pink';
+const CACHE_NAME = 'hp-calculator-modern-v3-iphone';
 const PRECACHE = [
   './',
   './index.html',
@@ -9,6 +9,9 @@ const PRECACHE = [
   './calculator-core.js',
   './manifest.json',
   './Assets/10bii-icon.svg',
+  './Assets/pink-touch-icon.png',
+  './Assets/pink-icon-192.png',
+  './Assets/pink-icon-512.png',
   './legacy.html',
   './calculator.js',
   './styles.css',

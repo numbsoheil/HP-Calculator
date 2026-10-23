@@ -265,3 +265,137 @@ footer a { color:var(--ink); font-weight:700; }
 @media (prefers-reduced-motion:reduce) {
   .key { transition:none; }
 }
+
+/* Phone app layout: use the available iOS viewport, including notches and Home indicator.
+   The register details can expand and scroll; the default keyboard fits portrait screens. */
+.panel-heading { display: flex; align-items: center; justify-content: center; }
+.register-toggle { display: none; }
+
+@media (max-width: 599px) {
+  html { width: 100%; min-height: 100%; -webkit-text-size-adjust: 100%; }
+  body {
+    width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
+    background: var(--shell);
+  }
+  .calculator {
+    width: 100%;
+    max-width: none;
+    height: 100dvh;
+    min-height: 100dvh;
+    margin: 0;
+    padding: max(10px, env(safe-area-inset-top))
+             max(8px, env(safe-area-inset-right))
+             max(10px, env(safe-area-inset-bottom))
+             max(8px, env(safe-area-inset-left));
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .hardware-strip { flex: 0 0 auto; min-height: 28px; margin-bottom: 7px; gap: 5px; }
+  .series-mark small { font-size: 8px; letter-spacing: .14em; }
+  .series-mark strong { font-size: 11px; letter-spacing: .065em; }
+  .theme-toggle { min-height: 30px; font-size: 10px; padding: 4px 9px; }
+  .display-header {
+    min-height: 77px;
+    padding: 9px;
+    flex: 0 0 auto;
+    border-width: 2px;
+    border-radius: 10px;
+  }
+  .result { flex: 1 1 auto; font-size: clamp(25px, 7.5vw, 40px); }
+  .result.error { font-size: clamp(24px, 7vw, 35px); }
+  .identity strong { font-size: clamp(22px, 6vw, 28px); }
+  .identity small { font-size: 12px; }
+  .identity em { font-size: 8px; }
+  .data-panel {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 2px 7px;
+    flex: 0 0 auto;
+    min-height: 36px;
+    margin: 7px 0 6px;
+    padding: 5px 8px;
+    border-width: 1px;
+    border-radius: 8px;
+  }
+  .panel-heading { grid-column: 1; grid-row: 1; justify-content: flex-start; gap: 5px; min-width: 0; }
+  .panel-heading h1 { font-size: 9px; margin: 0; letter-spacing: .04em; white-space: nowrap; }
+  .register-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--lcd-ink);
+    background: transparent;
+    padding: 2px 4px;
+    border: 1px solid var(--panel-border);
+    border-radius: 6px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+  .register-toggle:focus-visible { outline: 2px solid var(--outline); outline-offset: 2px; }
+  .register-toggle span { font-size: 13px; line-height: 1; }
+  .data-panel[data-expanded="true"] .register-toggle span { transform: rotate(180deg); }
+  .data-panel dl { display: none; grid-column: 1 / -1; grid-row: 2; padding: 6px 0 2px; }
+  .data-panel[data-expanded="true"] dl { display: grid; }
+  .data-panel dl div { grid-template-columns: 82px minmax(0, 1fr); }
+  .data-panel p {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    text-align: right;
+  }
+  .reg-summary {
+    flex: 0 0 auto;
+    margin: 0 3px 4px;
+    font-size: 9px;
+    line-height: 1.2;
+  }
+  .keyboard {
+    flex: 1 1 auto;
+    min-height: 398px;
+    max-height: 530px;
+    margin-top: auto;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(7, minmax(0, 1fr));
+    gap: clamp(3px, .6dvh, 6px) clamp(4px, 1.35vw, 7px);
+  }
+  .key {
+    height: auto;
+    min-height: 44px;
+    margin-top: clamp(9px, 1.3dvh, 12px);
+    padding: 3px 1px;
+    border-radius: 13px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .key strong { font-size: clamp(15px, 4.35vw, 21px); }
+  .key small { min-height: 9px; font-size: clamp(7px, 1.9vw, 9px); }
+  .key .above {
+    left: -1px;
+    right: -1px;
+    bottom: calc(100% + 1px);
+    font-size: clamp(7px, 2vw, 9px);
+    line-height: 1.05;
+  }
+  .key.shift strong { padding: 8px 0; font-size: 20px; border-radius: 10px; }
+  footer { display: none; }
+}
+
+@media (max-width: 599px) and (max-height: 720px) {
+  .hardware-strip { margin-bottom: 4px; min-height: 26px; }
+  .display-header { min-height: 68px; padding: 7px; }
+  .data-panel { margin: 5px 0 4px; min-height: 32px; }
+  .reg-summary { margin-bottom: 3px; }
+  .keyboard { min-height: 385px; gap: 3px 4px; }
+  .key { margin-top: 9px; }
+}
