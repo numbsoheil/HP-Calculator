@@ -6,6 +6,10 @@
   <meta name="theme-color" content="#202020">
   <meta name="description" content="Modern financial calculator inspired by the 10bII+ keyboard">
   <title>10bII+ Modern | Financial Calculator</title>
+  <link rel="icon" type="image/svg+xml" href="Assets/10bii-icon.svg">
+  <link rel="manifest" href="manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="stylesheet" href="modern.css">
   <script defer src="calculator-core.js"></script>
   <script defer src="modern.js"></script>
@@ -78,5 +82,8 @@
     </section>
     <footer><span>Prototype · Financial functions under validation</span><a href="./legacy.html">Original HP12c</a></footer>
   </main>
+  <script>
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js").catch(console.warn));
+  </script>
 </body>
 </html>
