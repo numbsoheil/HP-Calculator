@@ -28,11 +28,11 @@ docker compose up --build -d      # Rebuild after pulling source updates
 
 ## Automated publishing
 
-The repository includes `.github/workflows/docker-image.yml`. GitHub Actions validates the Docker build on pull requests and publishes an image to `ghcr.io/numbsoheil/hp-calculator:latest` on pushes to `main`, subject to GitHub Actions/package permissions. Publishing an image **does not run a server**.
+The repository includes `.github/workflows/ci.yml`. A single GitHub Actions workflow runs calculator tests inside the Docker build, smoke-tests pull requests, and publishes an image to `ghcr.io/numbsoheil/hp-calculator:latest` on pushes to `main`, subject to GitHub Actions/package permissions. Publishing an image **does not run a server**.
 
 GitHub Pages deploys the static website without requiring Docker or a VPS (if Pages is enabled in repo settings): **https://numbsoheil.github.io/HP-Calculator/**.
 
-If the Pages workflow fails because GitHub Pages has not yet been enabled, go to repository Settings → Pages → Build and deployment → Source → **GitHub Actions** and rerun the workflow.
+GitHub Pages deployment is optional. Until Pages is enabled, CI checks availability and skips deployment without failing. To activate the public site, go to Settings → Pages → Build and deployment → Source → **GitHub Actions**, then rerun **Calculator CI and Deployment**.
 
 ## Local tests without Docker
 
