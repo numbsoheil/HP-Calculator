@@ -3,7 +3,6 @@ node_modules
 .github
 .claude
 *.md
-*.test.js
 *.ps1
 .DS_Store
 coverage
