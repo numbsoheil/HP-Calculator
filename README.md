@@ -415,3 +415,23 @@ This project is designed for educational use to help students learn HP-12c calcu
 ---
 
 **For Support**: Refer to source code comments for implementation details. All FAQ examples have been verified for mathematical accuracy against HP-12c calculations.
+
+
+## iPhone Home Screen app
+
+The pink financial calculator is installable from GitHub Pages:
+https://numbsoheil.github.io/HP-Calculator/
+
+1. Open the site in **Safari** on iPhone.
+2. Tap **Share → Add to Home Screen** and add **Pink Calc**.
+3. Launch from the Home Screen for standalone, full-viewport mode.
+
+The iPhone layout uses safe-area insets for the notch and Home indicator, keeps
+all seven key rows accessible, and collapses the register readout behind the
+**Details** toggle on phone screens. The 180 px Apple touch icon and the
+192/512 px PWA icons depict the pink calculator instead of the inherited HP12c
+branding.
+
+If the old AmyCalc icon remains, remove the earlier Home Screen shortcut and
+add the calculator again from Safari. iOS may retain the icon for existing
+shortcuts. No VPS is required; the static application runs in the browser.

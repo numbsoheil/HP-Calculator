@@ -231,6 +231,16 @@
       if (!screen) return;
       const keyboard = document.getElementById('modern-keyboard');
       const status = document.getElementById('modern-status');
+      const registerPanel = document.querySelector('.data-panel');
+      const registerToggle = document.getElementById('register-toggle');
+      if (registerPanel && registerToggle) {
+        registerToggle.addEventListener('click', () => {
+          const expanded = registerPanel.dataset.expanded !== 'true';
+          registerPanel.dataset.expanded = String(expanded);
+          registerToggle.setAttribute('aria-expanded', String(expanded));
+          registerToggle.setAttribute('aria-label', expanded ? 'Hide data registers' : 'Show data registers');
+        });
+      }
       const panels = ['modern-buffer', 'modern-x', 'modern-input', 'modern-y', 'modern-pyr'];
       let layer = 'primary';
 

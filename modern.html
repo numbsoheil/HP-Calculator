@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f1c9d4">
+  <meta name="apple-mobile-web-app-title" content="Pink Calc">
+  <meta name="format-detection" content="telephone=no">
   <meta name="description" content="Modern financial calculator inspired by the 10bII+ keyboard">
   <title>10bII+ Modern | Financial Calculator</title>
-  <link rel="icon" type="image/svg+xml" href="Assets/10bii-icon.svg">
-  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="Assets/10bii-icon.svg?v=3">
+  <link rel="apple-touch-icon" sizes="180x180" href="Assets/pink-touch-icon.png?v=3">
+  <link rel="manifest" href="manifest.json?v=3">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="stylesheet" href="modern.css">
+  <link rel="stylesheet" href="modern.css?v=3">
   <script defer src="calculator-core.js"></script>
   <script defer src="modern.js"></script>
   <script defer src="theme.js"></script>
@@ -25,9 +28,12 @@
       <output id="modern-display" class="result" aria-live="polite">0.00</output>
       <div class="identity"><strong>10bII<span>+</span></strong><small>Modern</small><em>Web edition</em></div>
     </header>
-    <section class="data-panel" aria-label="Data and input registers">
-      <h1>DATA/INPUT</h1>
-      <dl>
+    <section class="data-panel" aria-label="Data and input registers" data-expanded="false">
+      <div class="panel-heading">
+        <h1>DATA/INPUT</h1>
+        <button id="register-toggle" class="register-toggle" type="button" aria-expanded="false" aria-controls="register-grid" aria-label="Show data registers">Details <span aria-hidden="true">⌄</span></button>
+      </div>
+      <dl id="register-grid">
         <div><dt>Key buffer:</dt><dd id="modern-buffer">—</dd></div>
         <div><dt>X:</dt><dd id="modern-x">0</dd></div>
         <div><dt>INPUT:</dt><dd id="modern-input">—</dd></div>
