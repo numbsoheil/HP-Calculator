@@ -1,10 +1,11 @@
-const CACHE_NAME = 'hp-calculator-modern-v1';
+const CACHE_NAME = 'hp-calculator-modern-v2-pink';
 const PRECACHE = [
   './',
   './index.html',
   './modern.html',
   './modern.css',
   './modern.js',
+  './theme.js',
   './calculator-core.js',
   './manifest.json',
   './Assets/10bii-icon.svg',

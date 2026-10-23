@@ -12,7 +12,7 @@ FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=verify /verified /etc/hp-calculator-build-verification
 COPY index.html modern.html legacy.html /usr/share/nginx/html/
-COPY calculator.js calculator-core.js modern.js help.js service-worker.js /usr/share/nginx/html/
+COPY calculator.js calculator-core.js modern.js theme.js help.js service-worker.js /usr/share/nginx/html/
 COPY styles.css modern.css manifest.json faq-data.json /usr/share/nginx/html/
 COPY Assets/ /usr/share/nginx/html/Assets/
 EXPOSE 8080

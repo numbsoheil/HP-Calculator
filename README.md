@@ -2,7 +2,7 @@
 
 > **Status: early adaptation prototype.** The new mobile-first 10bII+-inspired interface is now the main landing page; advanced functions remain under development. This repository is a fork of [mscottsewell/HP12c](https://github.com/mscottsewell/HP12c), not the official HP or Anishu software.
 
-- **Modern calculator:** [modern.html](modern.html) (default after opening [index.html](index.html))
+- **Modern calculator:** [modern.html](modern.html) (default after opening [index.html](index.html)); now styled with a Casio ClassWiz-inspired soft-pink theme. Use the **Dark mode / Pink mode** button to switch themes. The choice is saved locally.
 - **Original HP 12C simulator:** [legacy.html](legacy.html)
 - **Run with Docker:** `docker compose up --build -d`, then open **http://localhost:8080**
 - **Static site (if GitHub Pages is enabled):** https://numbsoheil.github.io/HP-Calculator/
