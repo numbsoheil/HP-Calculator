@@ -1,11 +1,23 @@
 name: Calculator Tests
+
 on:
   pull_request:
     branches: [main]
+    paths-ignore:
+      - '**/*.md'
   push:
-    branches: [feat/10bii-modern-web]
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+  workflow_dispatch:
+
 permissions:
   contents: read
+
+concurrency:
+  group: calculator-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
