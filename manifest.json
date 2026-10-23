@@ -1,12 +1,12 @@
 {
-  "name": "10bII+ Modern Web Calculator",
+  "name": "10bII+ Modern — Classic Pink",
   "short_name": "10bII+ Modern",
   "description": "An independent financial calculator web adaptation inspired by the 10bII+ layout",
   "start_url": "./modern.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#202020",
-  "theme_color": "#202020",
+  "background_color": "#fff6f8",
+  "theme_color": "#f1c9d4",
   "orientation": "any",
   "icons": [
     {
